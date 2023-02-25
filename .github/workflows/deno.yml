@@ -1,0 +1,39 @@
+name: Deno CI
+
+on:
+  push:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup Docker Compose
+        uses: isbang/compose-action@v1.4.1
+        with:
+          compose-file: docker-compose.yml
+
+      - name: Setup Deno
+        uses: denolib/setup-deno@v2
+        with:
+          deno-version: 1.31.1
+
+      - name: Install dependencies
+        run: deno cache --unstable deps.ts
+
+      - name: Lint code
+        run: deno lint src/
+
+      - name: Run tests
+        run: deno test
+
+      - name: Shutdown services
+        if: always()
+        run: docker-compose down
