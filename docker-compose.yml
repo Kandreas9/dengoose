@@ -1,0 +1,15 @@
+services:
+  mongo:
+    image: mongo
+    container_name: mongodb
+    environment:
+      MONGO_ROOT_USERNAME: dengoose
+      MONGO_ROOT_PASSWORD: password
+    ports:
+      - "-27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+    restart: always
+
+volumes:
+  mongodb_data:
