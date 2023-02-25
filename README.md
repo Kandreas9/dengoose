@@ -1,1 +1,1 @@
-![example workflow](https://github.com/Kandreas9/dengoose/actions/workflows/ci.yml/badge.svg)
+![example workflow](https://github.com/Kandreas9/dengoose/actions/workflows/tests.yml/badge.svg)
