@@ -1,0 +1,1 @@
+![example workflow](https://github.com/Kandreas9/dengoose/actions/workflows/deno.yml/badge.svg)
