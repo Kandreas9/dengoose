@@ -3,10 +3,11 @@ services:
     image: mongo
     container_name: mongodb
     environment:
-      MONGO_ROOT_USERNAME: dengoose
-      MONGO_ROOT_PASSWORD: password
+      MONGO_INITDB_DATABASE: ${DB_NAME}
+      MONGO_ROOT_USERNAME: ${DB_USERNAME}
+      MONGO_ROOT_PASSWORD: ${DB_PASSWORD}
     ports:
-      - "-27017:27017"
+      - "${FORWARD_DB_PORT:-27017}:27017"
     volumes:
       - mongodb_data:/data/db
     restart: always
